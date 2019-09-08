@@ -1,5 +1,5 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-module Control.Monad.Suspend.Counter where
+module Control.Monad.Suspend.Unlawful.Counter where
 
 import Control.Monad.Suspend
 import Control.Monad
