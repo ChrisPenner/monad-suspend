@@ -37,8 +37,8 @@ instance (Monad m) => Monad (SuspendT o m) where
       when (costCondition currentCost) (request currentCost >>= lift . put)
       runSuspend $ f x'
 
-suspendAtCost :: (Monad m) => o -> (o -> Bool) -> SuspendT o m a -> m (Either (SuspendT o m a) a)
-suspendAtCost startCost condition (SuspendT crt) = flip evalStateT startCost . flip runReaderT condition $ do
+suspendAtCost :: (Monad m) => o -> (o -> Bool) -> SuspendT o m r -> m (Either (SuspendT o m r) r, o)
+suspendAtCost startCost condition (SuspendT crt) = flip runStateT startCost . flip runReaderT condition $ do
     resume crt >>= \case
         Left (Request cst continue) -> return . Left . SuspendT $ continue cst
         Right a -> return $ Right a
@@ -52,6 +52,3 @@ test = do
     liftIO $ print "three"
     spend 40
     liftIO $ print "four"
-
-
-
