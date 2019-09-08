@@ -21,6 +21,24 @@ description:         Please see the README on GitHub at <https://github.com/Chri
 
 dependencies:
 - base >= 4.7 && < 5
+- mtl
+- monad-coroutine
+
+default-extensions:
+- FlexibleInstances
+- FlexibleContexts
+- ScopedTypeVariables
+- LambdaCase
+- ViewPatterns
+- TypeApplications
+- TypeOperators
+- DeriveFunctor
+- DeriveTraversable
+- DeriveGeneric
+- DerivingStrategies
+- StandaloneDeriving
+- TemplateHaskell
+- RankNTypes
 
 library:
   source-dirs: src
